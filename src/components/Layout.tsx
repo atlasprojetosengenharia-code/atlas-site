@@ -121,8 +121,8 @@ export function Footer() {
         <div>
           <p className="eyebrow mb-5">Contato</p>
           <ul className="space-y-3 text-sm text-mist/75">
-            <li className="flex items-center gap-3"><Mail size={15} className="text-steel" /> <a className="link-u" href={`mailto:${site.email}`}>{site.email}</a></li>
-            {site.phone && <li className="flex items-center gap-3"><Phone size={15} className="text-steel" /> {site.phone}</li>}
+            {site.email && <li className="flex items-center gap-3"><Mail size={15} className="text-steel" /> <a className="link-u" href={`mailto:${site.email}`}>{site.email}</a></li>}
+            {site.phone && <li className="flex items-center gap-3"><Phone size={15} className="text-steel" /> <a className="link-u" href={`tel:+55${site.phone.replace(/\D/g, '')}`}>{site.phone}</a></li>}
             {site.city && <li className="flex items-center gap-3"><MapPin size={15} className="text-steel" /> {site.city}</li>}
           </ul>
         </div>

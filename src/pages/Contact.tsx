@@ -19,13 +19,18 @@ export default function Contact() {
     e.preventDefault()
     const d = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>
     const body = `Nome: ${d.nome}\nE-mail: ${d.email}\nTelefone: ${d.telefone || '-'}\nServiço: ${d.servico}\n\n${d.mensagem}`
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent('Contato pelo site: ' + d.servico)}&body=${encodeURIComponent(body)}`
+    if (site.email) {
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent('Contato pelo site: ' + d.servico)}&body=${encodeURIComponent(body)}`
+    } else {
+      const msg = `Olá! Vim pelo site da Atlas.\n\n${body}`
+      window.open(`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener')
+    }
     setSent(true)
   }
 
   const items = [
-    { icon: Mail, label: 'E-mail', value: site.email, href: `mailto:${site.email}` },
-    site.phone && { icon: Phone, label: 'Telefone', value: site.phone, href: `tel:${site.phone.replace(/\D/g, '')}` },
+    site.email && { icon: Mail, label: 'E-mail', value: site.email, href: `mailto:${site.email}` },
+    site.phone && { icon: Phone, label: 'Telefone', value: site.phone, href: `tel:+55${site.phone.replace(/\D/g, '')}` },
     site.whatsapp && { icon: MessageCircle, label: 'WhatsApp', value: 'Conversar agora', href: `https://wa.me/${site.whatsapp}` },
     site.city && { icon: MapPin, label: 'Localização', value: site.city },
   ].filter(Boolean) as { icon: typeof Mail; label: string; value: string; href?: string }[]
@@ -79,7 +84,7 @@ export default function Contact() {
                 <button type="submit" className="rounded-full bg-mist px-8 py-3.5 text-[0.78rem] font-medium uppercase tracking-[0.18em] text-navy transition-colors duration-500 hover:bg-steel">
                   Enviar mensagem
                 </button>
-                {sent && <p role="status" className="text-sm text-steel">Abrimos seu aplicativo de e-mail para concluir o envio.</p>}
+                {sent && <p role="status" className="text-sm text-steel">{site.email ? 'Abrimos seu aplicativo de e-mail para concluir o envio.' : 'Abrimos o WhatsApp com a mensagem pronta. Basta enviar.'}</p>}
               </div>
               <p className="text-xs text-mist/40">Usamos seus dados apenas para responder ao seu contato (LGPD).</p>
             </form>
