@@ -4,6 +4,7 @@ import { Menu, X, Mail, Phone, MapPin } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { nav, site } from '../config/site'
+import { Instagram } from './ui'
 import { Button } from './ui'
 
 export function Navbar() {
@@ -123,6 +124,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-mist/75">
             {site.email && <li className="flex items-center gap-3"><Mail size={15} className="text-steel" /> <a className="link-u" href={`mailto:${site.email}`}>{site.email}</a></li>}
             {site.phone && <li className="flex items-center gap-3"><Phone size={15} className="text-steel" /> <a className="link-u" href={`tel:+55${site.phone.replace(/\D/g, '')}`}>{site.phone}</a></li>}
+            {site.instagram && <li className="flex items-center gap-3"><Instagram size={15} className="text-steel" /> <a className="link-u" href={`https://instagram.com/${site.instagram}`} target="_blank" rel="noopener noreferrer">@{site.instagram}</a></li>}
             {site.city && <li className="flex items-center gap-3"><MapPin size={15} className="text-steel" /> {site.city}</li>}
           </ul>
         </div>

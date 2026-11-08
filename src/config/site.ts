@@ -6,6 +6,7 @@ export const site = {
   email: '', // quando houver e-mail da empresa, ex.: 'contato@atlasprojetos.eng.br'
   phone: '(73) 98103-1866',
   whatsapp: '5573981031866', // somente dígitos com DDI
+  instagram: 'atlas.eng.br', // usuário, sem @
   city: '', // ex.: 'São Paulo – SP'
   cnpj: '', // ex.: '00.000.000/0001-00'
   crea: '', // ex.: 'CREA-SP 0000000000'

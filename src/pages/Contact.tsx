@@ -1,7 +1,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import PageHero from '../components/PageHero'
-import { Reveal } from '../components/ui'
+import { Instagram, Reveal } from '../components/ui'
 import { site } from '../config/site'
 
 const services = ['Cálculo estrutural', 'Projeto arquitetônico', 'Orçamentação', 'Administração de obras', 'Contenções / Geotecnia', 'Outro']
@@ -32,6 +32,7 @@ export default function Contact() {
     site.email && { icon: Mail, label: 'E-mail', value: site.email, href: `mailto:${site.email}` },
     site.phone && { icon: Phone, label: 'Telefone', value: site.phone, href: `tel:+55${site.phone.replace(/\D/g, '')}` },
     site.whatsapp && { icon: MessageCircle, label: 'WhatsApp', value: 'Conversar agora', href: `https://wa.me/${site.whatsapp}` },
+    site.instagram && { icon: Instagram, label: 'Instagram', value: `@${site.instagram}`, href: `https://instagram.com/${site.instagram}` },
     site.city && { icon: MapPin, label: 'Localização', value: site.city },
   ].filter(Boolean) as { icon: typeof Mail; label: string; value: string; href?: string }[]
 
