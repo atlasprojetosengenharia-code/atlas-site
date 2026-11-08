@@ -1,0 +1,76 @@
+@import '@fontsource-variable/montserrat';
+@import 'tailwindcss';
+
+/* Tokens extraídos de "Apresentação da Marca - Atlas.pdf" */
+@theme {
+  --color-navy: #15253e; /* RGB 21,37,62 */
+  --color-navy-deep: #0d1829; /* variação mais escura p/ profundidade */
+  --color-slate: #4f555a; /* RGB 79,85,90 */
+  --color-mist: #e8e8e8; /* RGB 232,232,232 */
+  --color-steel: #8fa3c0; /* tom derivado do navy, p/ destaques e linhas técnicas */
+
+  --font-display: 'Montserrat Variable', system-ui, sans-serif;
+  --font-sans: 'Montserrat Variable', system-ui, sans-serif;
+
+  --animate-pulse-glow: pulse-glow 2.4s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(232 232 232 / 0.45), 0 0 18px 0 rgb(143 163 192 / 0.35); }
+  50% { box-shadow: 0 0 0 12px rgb(232 232 232 / 0), 0 0 34px 6px rgb(143 163 192 / 0.5); }
+}
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+html { background: var(--color-navy); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-mist);
+  background: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.025em; }
+h1 em, h2 em, h3 em, .ital { font-style: normal; font-weight: 500; color: var(--color-steel); }
+.bg-mist em { color: var(--color-slate) !important; }
+
+.eyebrow { font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-steel); }
+
+/* Link com sublinhado expansivo */
+.link-u { position: relative; }
+.link-u::after {
+  content: ''; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
+  background: currentColor; transform: scaleX(0); transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.link-u:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(110deg, #1b2f4d 8%, #263e63 18%, #1b2f4d 33%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* Estampa da marca (símbolo repetido) */
+.pattern {
+  background-image: url('/brand/symbol-light.png');
+  background-size: 150px auto;
+  background-repeat: repeat;
+}
+
+.glass { background: rgb(21 37 62 / 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+:focus-visible { outline: 2px solid var(--color-steel); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
