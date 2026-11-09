@@ -3,7 +3,7 @@ export const site = {
   name: 'Atlas Projetos e Engenharia',
   legalName: 'Atlas Projetos e Engenharia LTDA',
   domain: 'www.atlasprojetos.eng.br',
-  email: '', // quando houver e-mail da empresa, ex.: 'contato@atlasprojetos.eng.br'
+  email: 'contato@atlasprojetos.eng.br',
   phone: '(73) 98103-1866',
   whatsapp: '5573981031866', // somente dígitos com DDI
   instagram: 'atlasprojetos.eng.br', // usuário, sem @
