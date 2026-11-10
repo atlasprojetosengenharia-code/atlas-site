@@ -10,7 +10,7 @@ export const site = {
   city: '', // ex.: 'São Paulo – SP'
   cnpj: '', // ex.: '00.000.000/0001-00'
   crea: '', // ex.: 'CREA-SP 0000000000'
-  responsible: 'Kaique Ferreira', // Responsável técnico
+  responsible: '', // Responsável técnico
 }
 
 export const software = {
